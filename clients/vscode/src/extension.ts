@@ -454,7 +454,7 @@ export async function activate(context: vscode.ExtensionContext) {
   await ext.activateExtension('slang', 'slang', context, [
     'AndrewNolte.vscode-system-verilog',
     'AndrewNolte.vscode-slang',
-    // 'mshr-h.veriloghdl',
+    'mshr-h.veriloghdl',
     'eirikpre.systemverilog',
     'IMCTradingBV.svlangserver',
   ])

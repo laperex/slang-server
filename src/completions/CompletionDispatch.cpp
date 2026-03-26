@@ -54,10 +54,14 @@ void CompletionDispatch::getInvokedCompletions(std::vector<lsp::CompletionItem>&
     completions::addIndexedCompletions(results, m_indexer, ctx);
 
     if (scope) {
-        bool isLhs = (ctx.kind == CompletionContextKind::PortList ||
-                      ctx.kind == CompletionContextKind::Procedural ||
-                      ctx.kind == CompletionContextKind::ModuleMember);
-        completions::addMemberCompletions(results, scope, isLhs, scope);
+        // Disabled to Enable Autocompletion irrespective of LHS Criteria
+        // When Enabled Completion do not trigger inside always block
+        // https://github.com/hudson-trading/slang-server/issues/274
+
+        // bool isLhs = (ctx.kind == CompletionContextKind::PortList ||
+        //               ctx.kind == CompletionContextKind::Procedural ||
+        //               ctx.kind == CompletionContextKind::ModuleMember);
+        completions::addMemberCompletions(results, scope, false, scope);
     }
 
     INFO("Returning {} completions in {} context", results.size(), toString(ctx.kind));

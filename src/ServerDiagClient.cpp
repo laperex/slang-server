@@ -71,6 +71,8 @@ bool isUnusedCode(DiagCode code) {
 }
 
 void ServerDiagClient::report(const slang::ReportedDiagnostic& diag) {
+    //! Disable Error Squiggles to use the Xvlog linter from Verilog HDL Extension
+    return;
 
     // Ignore this- happens all the time in explore mode, for example when looking at include files
     if (diag.originalDiagnostic.code == slang::diag::NoTopModules) {

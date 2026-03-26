@@ -60,6 +60,7 @@ ServerDriver::ServerDriver(Indexer& indexer, SlangLspClient& client, const Confi
     parseOpts.ignoreDuplicates = true;
 
     bool ok = driver.parseCommandLine(m_config.flags.value(), parseOpts);
+    INFO("flags.value: {}", m_config.flags.value())
     driver.options.errorLimit = 0;
     ok &= driver.processOptions(false);
     if (!ok) {
@@ -77,7 +78,7 @@ ServerDriver::ServerDriver(Indexer& indexer, SlangLspClient& client, const Confi
     }
 
     // Configure diagnostic engine
-    diagEngine.setIgnoreAllWarnings(false);
+    diagEngine.setIgnoreAllWarnings(true);
     diagEngine.setIgnoreAllNotes(false);
     diagEngine.addClient(diagClient);
 
